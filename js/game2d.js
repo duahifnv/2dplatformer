@@ -1,16 +1,36 @@
 var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("canvas-2d"));
 const c = canvas.getContext("2d");
 
-canvas.width = 1024;
-canvas.height = 512;
+canvas.width = 1080;
+canvas.height = 540;
 
 const playerSize = 50;
 const gravityC = .5;
+const defaultVelocity_X = 3;
+const defaultVelocity_Y = 10;
 
-// Класс управляемого игрока
+// Класс спрайтов
+class Sprite {
+    constructor({position, imageSrc}) {
+        this.position = position;
+        this.image = new Image();
+        this.image.src = imageSrc;
+    }
+
+    draw() {
+        if (!this.image) return // Если изображения не существует
+        c.drawImage(this.image, this.position.x, this.position.y)
+    }
+
+    update() {
+        this.draw();
+    }
+}
+
+// Класс игроков
 class Player {
-    constructor(position, size) {
-        this.position = position
+    constructor(position) {
+        this.position = position;
         this.size = {
             width: playerSize,
             height: playerSize
@@ -62,15 +82,25 @@ const keys = {
     }
 }
 
+// Задний фон
+const background = new Sprite({
+    position: {
+        x: 0, y: 0
+    },
+    imageSrc: "../img/backgrounds/bg1.png"
+});
+
 // Функция постоянной отрисовки поля и игрока
 function animate(){
     window.requestAnimationFrame(animate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
+
+    background.update();
     player.update();
     player.velocity.x = 0;
-    if (keys.d.isPressed) player.velocity.x = 5;
-    else if (keys.a.isPressed) player.velocity.x = -5;
+    if (keys.d.isPressed) player.velocity.x = defaultVelocity_X;
+    else if (keys.a.isPressed) player.velocity.x = -defaultVelocity_X;
 }
 animate();
 
@@ -86,7 +116,7 @@ window.addEventListener('keydown', (event) => {
         case 'w':
             keys.w.isPressed = true;
             if (player.position.y + player.size.height == canvas.height) {
-                player.velocity.y = -10;
+                player.velocity.y = -defaultVelocity_Y;
             }
             break;
     }
