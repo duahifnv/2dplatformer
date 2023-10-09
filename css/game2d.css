@@ -4,6 +4,8 @@
     border: 0;
 }
 
-#canvas-2d {
-    border: 3px solid black;
+body {
+    background: rgb(214, 181, 154);
+    width: 100%;
+    height: 100vh;
 }
