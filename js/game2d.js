@@ -1,13 +1,32 @@
 var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("canvas-2d"));
 const c = canvas.getContext("2d");
 
-canvas.width = 1080;
-canvas.height = 540;
+// canvas.width = 1535;
+// canvas.height = 600;
+canvas.width = 1280;
+canvas.height = 704
 
-const playerSize = 50;
+const playerSize = 40;
 const gravityC = .5;
 const defaultVelocity_X = 3;
 const defaultVelocity_Y = 10;
+
+class Background {
+    constructor({source, scale}) {
+        this.bg = new Image();
+        this.bg.src = source;
+        this.scale = scale;
+    }
+
+    draw() {
+        if (!this.bg) return;
+        c.drawImage(this.bg, 0, 0, canvas.width * this.scale, canvas.height * this.scale);
+    }
+
+    update () {
+        this.draw();
+    }
+}
 
 // Класс спрайтов
 class Sprite {
@@ -18,8 +37,8 @@ class Sprite {
     }
 
     draw() {
-        if (!this.image) return // Если изображения не существует
-        c.drawImage(this.image, this.position.x, this.position.y)
+        if (!this.image) return; // Если изображения не существует
+        c.drawImage(this.image, this.position.x, this.position.y);
     }
 
     update() {
@@ -27,7 +46,7 @@ class Sprite {
     }
 }
 
-// Класс игроков
+// Класс игрока
 class Player {
     constructor(position) {
         this.position = position;
@@ -41,7 +60,7 @@ class Player {
         }
     }
     draw() {
-        c.fillStyle = "white";
+        c.fillStyle = "black";
         c.fillRect(
             this.position.x,
             this.position.y,
@@ -69,26 +88,15 @@ const player = new Player({
     x: 500, y: canvas.height - playerSize
 })
 
-// Нажимаемые клавиши
-const keys = {
-    d: {
-        isPressed: false
-    },
-    a: {
-        isPressed: false
-    },
-    w: {
-        isPressed: false
-    }
+// Задний фон
+const background = new Background({
+    source: "../img/backgrounds/celeste1.png",
+    scale: 1
+});
+window.onload = () => {
+    animate();
 }
 
-// Задний фон
-const background = new Sprite({
-    position: {
-        x: 0, y: 0
-    },
-    imageSrc: "../img/backgrounds/bg1.png"
-});
 
 // Функция постоянной отрисовки поля и игрока
 function animate(){
@@ -102,18 +110,32 @@ function animate(){
     if (keys.d.isPressed) player.velocity.x = defaultVelocity_X;
     else if (keys.a.isPressed) player.velocity.x = -defaultVelocity_X;
 }
-animate();
+
+// Нажимаемые клавиши
+const keys = {
+    d: {
+        isPressed: false
+    },
+    a: {
+        isPressed: false
+    },
+    w: {
+        isPressed: false
+    }
+}
+
+
 
 // Прослушивание нажатых и отжатых клавиш
 window.addEventListener('keydown', (event) => {
     switch (event.key) {
-        case 'd':
+        case 'd': case 'D': case 'в': case 'В':
             keys.d.isPressed = true;
             break;
-        case 'a':
+        case 'a': case 'A': case 'ф': case 'Ф':
             keys.a.isPressed = true;
             break;
-        case 'w':
+        case 'w': case 'W': case 'ц': case 'Ц':
             keys.w.isPressed = true;
             if (player.position.y + player.size.height == canvas.height) {
                 player.velocity.y = -defaultVelocity_Y;
@@ -123,13 +145,13 @@ window.addEventListener('keydown', (event) => {
 });
 window.addEventListener('keyup', (event) => {
     switch (event.key) {
-        case 'd':
+        case 'd': case 'D': case 'в': case 'В':
             keys.d.isPressed = false;
             break;
-        case 'a':
+        case 'a': case 'A': case 'ф': case 'Ф':
             keys.a.isPressed = false;
             break;
-        case 'w':
+        case 'w': case 'W': case 'ц': case 'Ц':
             keys.w.isPressed = false;
             break;
     }
