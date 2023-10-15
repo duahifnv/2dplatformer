@@ -11,27 +11,46 @@ class Player {
             y: 1
         };
         this.collisionBlocks = collisionBlocks;
+        const playerTexture = '../img/characters/player.png';
+        this.sprite = new Sprite({
+            position: this.position, 
+            imageSrc: playerTexture,
+            size: this.size
+        });
     }
-    draw() {
-        c.fillStyle = "white";
-        c.fillRect(
-            this.position.x,
-            this.position.y,
-            this.size.width,
-            this.size.height
-        );
-    }
+
     update() {
-        this.draw();
+        //this.drawPlayerHitbox();
+        //this.drawCollisionBlocks();
+        this.sprite.draw();
         this.position.x += this.velocity.x;
         this.checkForHorizontalCollisions();
         this.applyGravity();
         this.checkForVerticalCollisions();
     }
+
+    drawCollisionBlocks(){
+        for(let i = 0; i < this.collisionBlocks.length; i++){
+            c.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            c.fillRect(
+                this.collisionBlocks[i].position.x,
+                this.collisionBlocks[i].position.y,
+                this.collisionBlocks[i].width,
+                this.collisionBlocks[i].height
+            );
+        }
+    }
+
+    drawPlayerHitbox(){
+        c.fillStyle = 'rgba(0, 255, 0, 0.5)';
+        c.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+    }
+
     applyGravity() {
         this.position.y += this.velocity.y;
         this.velocity.y += gravityC;
     }
+
     checkForVerticalCollisions() {
         for (let i = 0; i < this.collisionBlocks.length; i++) {
             const collisionBlock = this.collisionBlocks[i];
@@ -52,6 +71,7 @@ class Player {
             }
         }
     }
+    
     checkForHorizontalCollisions() {
         for (let i = 0; i < this.collisionBlocks.length; i++) {
             const collisionBlock = this.collisionBlocks[i];
