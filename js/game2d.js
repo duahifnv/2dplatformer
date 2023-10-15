@@ -13,7 +13,7 @@ const startPos = {
     x: tileSize * 3,
     y: tileSize * 18
 }
-const playerSize = 30;
+const playerSize = 31;
 const gravityC = .5;
 const defaultVelocity_X = 3;
 const defaultVelocity_Y = 10;
@@ -64,6 +64,7 @@ function animate(){
     collisionBlocks.forEach((collisionBlock) => {
         collisionBlock.update();
     })
+
     player.update();
     player.velocity.x = 0;
     if (keys.d.isPressed) player.velocity.x = defaultVelocity_X;
@@ -93,10 +94,11 @@ window.addEventListener('keydown', (event) => {
             break;
         case 'w': case 'W': case 'ц': case 'Ц':
             keys.w.isPressed = true;
-            player.velocity.y = -defaultVelocity_Y;
-            // if (player.position.y + player.size.height == canvas.height) {
-            //     player.velocity.y = -defaultVelocity_Y;
-            // }
+            for(let i = 0; i < collisionBlocks.length; i++){
+                if (player.position.y + player.size.height === collisionBlocks[i].position.y - 0.01){
+                    player.velocity.y = -defaultVelocity_Y;
+                }
+            }
             break;
         case 'r': case 'R': case 'к': case 'К':
             player.position.x = startPos.x;
