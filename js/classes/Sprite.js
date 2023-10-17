@@ -5,15 +5,25 @@ class Sprite {
         this.image = new Image();
         this.image.src = imageSrc;
 
-        this.size = size;
+        this.width = size.width;
+        this.height = size.height;
+        this.flippedByX = false;
     }
     draw() {
         if (!this.image) return; // Если изображения не существует
-        c.drawImage(this.image, this.position.x, this.position.y, this.size.width, this.size.height);
-        
+        if (this.flippedByX) {
+            c.save();
+            c.translate(this.width, 0);
+            c.scale(-1, 1);
+            c.drawImage(this.image, -this.position.x, this.position.y, this.width, this.height);
+            c.restore();
+        }
+        else {
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        }
     }
 
-    update() {
-        this.draw();
+    flipByX(mode) {
+        this.flippedByX = mode ? false : true;
     }
 }
