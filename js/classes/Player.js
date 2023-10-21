@@ -10,7 +10,7 @@ class Player {
         };
         this.groundCollisionBlocks = groundCollisionBlocks;
         this.deathCollisionBlocks = deathCollisionBlocks;
-        const playerTexture = '../img/characters/player.png';
+        var playerTexture = '../img/characters/player.png';
 
         this.sprite = new Sprite({
             position: {
@@ -23,30 +23,41 @@ class Player {
                 height: textureSize
             }
         });
+
+        this.drawFlags = {
+            drawPlayerHitbox: false,
+            drawGroundCollisionBlocks: false,
+            drawDeathCollisionBlocks: false,
+        }
+        this.cheatFlags = {
+            flyMode: false,
+            // godMode: false
+        }
     }
 
     update() {
         this.sprite.draw();
         this.spritePositionUpdate();
 
-        this.drawPlayerHitbox();
-        //this.drawGroundCollisionBlocks();
-        //this.drawDeathCollisionBlocks();
+        for (const property in this.drawFlags) {
+            if (this.drawFlags[property] === true) {
+                eval('this.' + property + '()');
+            }
+        }
         this.checkForDeathCollision();
         this.horizontalAcceleration();
         this.checkForHorizontalCollisions();
         this.verticalAcceleration();
         this.checkForVerticalCollisions();
-        console.log(this.velocity.x);
     }
 
     horizontalAcceleration(){
         this.velocity.x = 0;
-        if (keys.d.isPressed) {
+        if (keys['KeyD'].isPressed) {
             this.velocity.x = defaultVelocity_X;
             this.sprite.flipByX(true);
         }
-        else if (keys.a.isPressed) {
+        else if (keys['KeyA'].isPressed) {
             this.velocity.x = -defaultVelocity_X;
             this.sprite.flipByX(false);
         }
@@ -54,15 +65,21 @@ class Player {
     }
 
     verticalAcceleration() {
-        if (keys.w.isPressed) {
-            for(let i = 0; i < groundCollisionBlocks.length; i++){
-                // Проверка на наличие "земли под ногами"
-                if (this.position.y + this.height === groundCollisionBlocks[i].position.y - 0.01){
-                    this.velocity.y = -defaultVelocity_Y;
+        if (keys['KeyW'].isPressed) {
+            if (this.cheatFlags.flyMode) {
+                this.velocity.y = -defaultVelocity_Y;
+            }
+            else {
+                for (let i = 0; i < groundCollisionBlocks.length; i++) {
+                    // Проверка на наличие "земли под ногами"
+                    if (this.position.y + this.height === groundCollisionBlocks[i].position.y - 0.01) {
+                        this.velocity.y = -defaultVelocity_Y;
+                    }
                 }
             }
+
         }
-        
+
         this.position.y += this.velocity.y;
         this.velocity.y += gravityC;
     }
@@ -77,7 +94,7 @@ class Player {
             const deathCollisionBlock = this.deathCollisionBlocks[i];
             if (
                 collision({
-                    obj1: this, 
+                    obj1: this,
                     obj2: deathCollisionBlock
                 })
             ){
@@ -110,13 +127,11 @@ class Player {
             )
         }
     }
-    
+
     drawPlayerHitbox(){
         c.fillStyle = 'rgba(0, 255, 0, 0.5)';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-
-    
 
     checkForVerticalCollisions() {
         for (let i = 0; i < this.groundCollisionBlocks.length; i++) {
