@@ -16,9 +16,8 @@ function animate(){
     player.update();
 }
 
-hotKeysListener();
-
 window.onload = () => {
+    hotKeysListener();
     animate();
 }
 

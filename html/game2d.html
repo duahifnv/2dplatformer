@@ -3,14 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/css/game2d.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/main-menu.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon/favicon1.ico">
-    <title>CelesteGame</title>
+    <title>KAVKAZ</title>
 </head>
 <body>
-    <canvas id="canvas-2d">
-        Unsupported canvas error;
-    </canvas>
+    <div class="game-wrapper">
+        <div class="menu-wrapper">
+            <div class="main-menu">
+                <div class="logo">
+                    <img src="/img/menu/Kavkaz_logo.png" alt="KAVKAZ">
+                </div>
+                <div class="nav">
+                    <div class="nav-list">
+                        <div class="button-wrapper">
+                            <button class="startGame" type="button">
+                                <p class="button-text">New Game</p>
+                            </button>
+                        </div>
+                        <div class="button-wrapper">
+                            <button class="leaderB" type="button">
+                                <p class="button-text">Leaderboards</p>
+                            </button>
+                        </div>
+                        <div class="button-wrapper">
+                            <button class="credits" type="button">
+                                <p class="button-text">Credits</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <video width="1280" height="720" autoplay muted loop id="background-vid">
+                    <source src="/video/CelesteAnimated.mp4">
+            </video>
+            </div>
+        </div>
+        <canvas id="canvas-2d">
+            <p>You're browser does not support the required functionality to play this game.</p>
+            <p>Please update to a modern browser such as <a href="www.google.com/chrome/">Google Chrome</a> to play.</p>
+        </canvas>
+    </div>
+
     <script src="/js/classes/CollisionBlock.js"></script>
     <script src="/js/classes/Sprite.js"></script>
     <script src="/js/classes/Player.js"></script>
