@@ -65,21 +65,6 @@ class Player {
     }
 
     verticalAcceleration() {
-        if (keys['KeyW'].isPressed) {
-            if (this.cheatFlags.flyMode) {
-                this.velocity.y = -defaultVelocity_Y;
-            }
-            else {
-                for (let i = 0; i < groundCollisionBlocks.length; i++) {
-                    // Проверка на наличие "земли под ногами"
-                    if (this.position.y + this.height === groundCollisionBlocks[i].position.y - 0.01) {
-                        this.velocity.y = -defaultVelocity_Y;
-                    }
-                }
-            }
-
-        }
-
         this.position.y += this.velocity.y;
         this.velocity.y += gravityC;
     }

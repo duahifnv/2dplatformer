@@ -15,6 +15,19 @@ function hotKeysListener(){
             keys[event.code].isPressed = true;
         }
         switch (event.code) {
+            case 'KeyW':
+                if (player.cheatFlags.flyMode) {
+                    player.velocity.y = -defaultVelocity_Y;
+                }
+                else {
+                    for (let i = 0; i < groundCollisionBlocks.length; i++) {
+                        // Проверка на наличие "земли под ногами"
+                        if (player.position.y + player.height === groundCollisionBlocks[i].position.y - 0.01) {
+                            player.velocity.y = -defaultVelocity_Y;
+                        }
+                    }
+                }
+            break;
             case 'KeyR':
                 player.position.x = startPos.x;
                 player.position.y = startPos.y;
