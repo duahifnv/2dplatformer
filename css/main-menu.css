@@ -10,7 +10,8 @@
 
 .main-menu {
     position: fixed;
-    margin: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
     width: 80%;
     height: 100%;
     display: flex;
@@ -23,7 +24,7 @@
 }
 
 .logo img {
-    margin-top: 15%;
+    margin-top: 10%;
     width: 100%;
 }
 
@@ -35,6 +36,6 @@
 .nav-list {
     display: flex;
     flex-wrap: wrap;
-    margin: 27% 10%;
-    height: 60%;
+    margin: 35% 10%;
+    height: 40%;
 }

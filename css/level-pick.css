@@ -1,0 +1,47 @@
+.level-pick {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+}
+.pick-title {
+    text-align: center;
+    font-size: 44px;
+    height: 20%;
+}
+.pick-wrapper__outer {
+    width: 100%;
+    height: 80%;
+    padding: 30px;
+}
+.pick-wrapper__inner {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+.level-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 370px;
+}
+.level-preview {
+    width: 250px;
+    height: 250px;
+}
+.level-name {
+    text-align: center;
+    height: 60px;
+    font-size: 30px;
+}
+.image-wrapper {
+    border: 10px solid white;
+    border-radius: 10px;
+    margin: 25px;
+    height: 80%;
+    width: 80%;
+}
