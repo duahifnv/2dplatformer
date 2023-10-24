@@ -1,6 +1,10 @@
-.level-pick {
-    position: fixed;
+#scene__level-pick {
     display: none;
+}
+
+.level-pick {
+    display: block;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

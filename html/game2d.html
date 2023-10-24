@@ -17,67 +17,71 @@
 </head>
 <body>
     <div class="game-wrapper">
-        <div id="menu" class="menu-wrapper">
-            <div class="main-menu">
-                <div class="logo">
-                    <img src="/img/menu/Kavkaz_logo.png" alt="KAVKAZ">
-                </div>
-                <div class="nav">
-                    <div class="nav-list">
-                        <div class="button-wrapper">
-                            <button class="pick_btn" id="startGame" type="button">
-                                <p class="button-text">New Game</p>
-                            </button>
-                        </div>
-                        <div class="button-wrapper">
-                            <button class="pick_btn" id="leaderB" type="button">
-                                <p class="button-text">Leaderboards</p>
-                            </button>
-                        </div>
-                        <div class="button-wrapper">
-                            <button class="pick_btn" id="credits" type="button">
-                                <p class="button-text">Credits</p>
-                            </button>
+        <div id="scene__menu">
+            <div id="scene__main-menu" class="scene-wrapper">
+                <div class="main-menu">
+                    <div class="logo">
+                        <img src="/img/menu/Kavkaz_logo.png" alt="KAVKAZ">
+                    </div>
+                    <div class="nav">
+                        <div class="nav-list">
+                            <div class="button-wrapper">
+                                <button class="pick_btn" id="level-pick_btn" type="button">
+                                    <p class="button-text">New Game</p>
+                                </button>
+                            </div>
+                            <div class="button-wrapper">
+                                <button class="pick_btn" id="leaderB_btn" type="button">
+                                    <p class="button-text">Leaderboards</p>
+                                </button>
+                            </div>
+                            <div class="button-wrapper">
+                                <button class="pick_btn" id="credits_btn" type="button">
+                                    <p class="button-text">Credits</p>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="level-pick">
-                <p class="pick-title">Choose level</p>
-                <div class="pick-wrapper__outer">
-                    <div class="pick-wrapper__inner">
-                        <div class="level-wrapper">
-                            <div class="level-preview" id="level_1">
-                                <div class="image-wrapper">
-                                    <img src="" alt="">
+            <div id="scene__level-pick" class="scene-wrapper">
+                <div class="level-pick">
+                    <p class="pick-title">Choose level</p>
+                    <div class="pick-wrapper__outer">
+                        <div class="pick-wrapper__inner">
+                            <div class="level-wrapper">
+                                <div class="level-preview" id="level_1">
+                                    <div class="image-wrapper">
+                                        <img src="" alt="">
+                                    </div>
                                 </div>
+                                <p class="level-name">Vladikavkaz</p>
+                                <button class="pick-btn" id="level_1_LB" type="button">
+                                    <p class="button-text">Show leaderboards</p>
+                                </button>
                             </div>
-                            <p class="level-name">Vladikavkaz</p>
-                            <button class="pick-btn" id="level_1_LB" type="button">
-                                <p class="button-text">Show leaderboards</p>
-                            </button>
-                        </div>
-                        <div class="level-wrapper">
-                            <div class="level-preview" id="level_1">
-                                <div class="image-wrapper">
-                                    <img src="" alt="">
+                            <div class="level-wrapper">
+                                <div class="level-preview" id="level_1">
+                                    <div class="image-wrapper">
+                                        <img src="" alt="">
+                                    </div>
                                 </div>
+                                <p class="level-name">Bataisk</p>
+                                <button class="pick-btn" id="level_1_LB" type="button">
+                                    <p class="button-text">Show leaderboards</p>
+                                </button>
                             </div>
-                            <p class="level-name">Bataisk</p>
-                            <button class="pick-btn" id="level_1_LB" type="button">
-                                <p class="button-text">Show leaderboards</p>
-                            </button>
-                        </div>
-                        <div class="level-wrapper">
-                            <div class="level-preview" id="level_1">
-                                <div class="image-wrapper">
-                                    <img src="" alt="">
+                            <div class="level-wrapper">
+                                <div class="level-preview" id="level_1">
+                                    <div class="image-wrapper">
+                                        <img src="" alt="">
+                                    </div>
                                 </div>
+                                <p class="level-name">Pyatigorsk</p>
+                                <button class="pick-btn" id="level_1_LB" type="button">
+                                    <p class="button-text">Show leaderboards</p>
+                                </button>
                             </div>
-                            <p class="level-name">Pyatigorsk</p>
-                            <button class="pick-btn" id="level_1_LB" type="button">
-                                <p class="button-text">Show leaderboards</p>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -86,7 +90,7 @@
                     <source src="/video/CelesteAnimated.mp4">
             </video>
         </div>
-        <canvas id="canvas-2d">
+        <canvas id="scene__game">
             <p>You're browser does not support the required functionality to play this game.</p>
             <p>Please update to a modern browser such as <a href="www.google.com/chrome/">Google Chrome</a> to play.</p>
         </canvas>

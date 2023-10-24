@@ -1,10 +1,10 @@
-var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("canvas-2d")); // Отображаемый canvas
+var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("scene__game")); // Отображаемый canvas
 const c = canvas.getContext("2d");                                                    // 2D режим
 
 
 // Функция постоянной отрисовки поля и игрока
-function repaint(){
-    window.requestAnimationFrame(repaint);
+function renderGame(){
+    window.requestAnimationFrame(renderGame);
 
     background.update();
     groundCollisionBlocks.forEach((collisionBlock) => {
@@ -17,16 +17,17 @@ function repaint(){
     player.update();
 }
 
+// Обработчики на кнопках главного экрана
 function mainMenu() {
-    btnNG = document.getElementById('startGame');
-    btnNG.addEventListener('click', startGame);
+    btnNG = document.getElementById('level-pick_btn');
+    btnNG.addEventListener('click', () => {
+        changeScene('scene__main-menu', 'scene__level-pick');
+    });
 }
 
 function startGame() {
-    hideElem(document.getElementById('menu'));
-
-    repaint();
-    showElem(document.getElementById('canvas-2d'));
+    changeScene('scene__menu', 'scene__game');
+    renderGame();
     hotKeysListener();
 }
 
