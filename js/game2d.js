@@ -19,12 +19,18 @@ function renderGame(){
 
 // Обработчики на кнопках главного экрана
 function mainMenu() {
-    btnNG = document.getElementById('level-pick_btn');
-    btnNG.addEventListener('click', () => {
+    btn_NewGame = document.getElementById('level-pick_btn');
+    btn_NewGame.addEventListener('click', () => {
         changeScene('scene__main-menu', 'scene__level-pick');
+        levelPick();
+    });
+    btn_Leaderboards = document.getElementById('leaderB_btn');
+    btn_Leaderboards.addEventListener('click', () => {
+        startGame();
     });
 }
 
+function levelPick() {}
 function startGame() {
     changeScene('scene__menu', 'scene__game');
     renderGame();

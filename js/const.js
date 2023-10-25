@@ -13,7 +13,7 @@ const keyCodes = [
     'KeyG',            // ОТОБРАЖЕНИЕ БЛОКОВ ЗЕМЛИ
     'KeyR',            // РЕСТАРТ ПОЗИЦИИ
     'KeyY',            // РЕЖИМ ПОЛЕТА
-]
+];
 
 var keys = {};
 for (let name of keyCodes) {
@@ -22,6 +22,10 @@ for (let name of keyCodes) {
     };
 }
 
+const backgrounds = {
+    'Vladikavkaz': "../img/backgrounds/vladikavkaz.png",
+    'Bataisk': "../img/backgrounds/bataisk.png"
+};
 canvas.width =              1280;           // Ширина Canvas поля в пикселах
 canvas.height =             704;            // Высота Canvas поля в пикселах
 
@@ -102,6 +106,6 @@ const player = new Player({
 
                                         // Обьект класса Background (задний фон)
 const background = new Background({
-    source: "../img/backgrounds/tilemap1.png",
+    source: backgrounds.Vladikavkaz,
     scale: 1
 });
