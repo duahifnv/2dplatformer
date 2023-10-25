@@ -8,8 +8,8 @@ function collision({ obj1, obj2 })
     )
 }
 
-function hotKeysListener(){
-    // Прослушивание нажатых и отжатых клавиш
+function KeysListener(){
+    // Прослушивание клавиш
     window.addEventListener('keydown', (event) => {
         if (keyCodes.includes(event.code)){
             keys[event.code].isPressed = true;
@@ -43,6 +43,14 @@ function hotKeysListener(){
                 break;
             case 'KeyG':
                 player.drawFlags.drawGroundCollisionBlocks = (player.drawFlags.drawGroundCollisionBlocks === false);
+                break;
+            case 'Escape':
+                if (stateId == 1) {
+                    window.cancelAnimationFrame(renderGame); // Остановка рендера игры
+                    changeState(0);
+                }
+                else changeScene(0);
+                mainMenu();
                 break;
         }
     });

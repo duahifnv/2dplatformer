@@ -13,6 +13,7 @@ const keyCodes = [
     'KeyG',            // ОТОБРАЖЕНИЕ БЛОКОВ ЗЕМЛИ
     'KeyR',            // РЕСТАРТ ПОЗИЦИИ
     'KeyY',            // РЕЖИМ ПОЛЕТА
+    'Escape',          // ВОЗВРАТ НА ГЛАВНЫЙ ЭКРАН
 ];
 
 var keys = {};
@@ -21,6 +22,14 @@ for (let name of keyCodes) {
         isPressed: false
     };
 }
+
+const sceneId_Names = new Map();
+sceneId_Names.set(0, 'scene__main-menu');
+sceneId_Names.set(1, 'scene__level-pick');
+
+const stateId_Names = new Map();
+stateId_Names.set(0, 'scene__menu');
+stateId_Names.set(1, 'scene__game');
 
 const backgrounds = {
     'Vladikavkaz': "../img/backgrounds/vladikavkaz.png",

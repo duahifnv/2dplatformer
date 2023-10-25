@@ -2,6 +2,8 @@ var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("scene__g
 const c = canvas.getContext("2d");                                                    // 2D режим
 
 
+var stateId = 0;             // 0 - Меню / 1 - Игра
+var sceneId = 0;             // Рендер меню на запуске
 // Функция постоянной отрисовки поля и игрока
 function renderGame(){
     window.requestAnimationFrame(renderGame);
@@ -17,11 +19,11 @@ function renderGame(){
     player.update();
 }
 
-// Обработчики на кнопках главного экрана
+// Главное меню
 function mainMenu() {
+    // Обработчики на кнопках главного экрана
     btn_NewGame = document.getElementById('level-pick_btn');
     btn_NewGame.addEventListener('click', () => {
-        changeScene('scene__main-menu', 'scene__level-pick');
         levelPick();
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
@@ -30,15 +32,19 @@ function mainMenu() {
     });
 }
 
-function levelPick() {}
+// Выбор уровня
+function levelPick() {
+    changeScene(1);
+}
+// Игра
 function startGame() {
-    changeScene('scene__menu', 'scene__game');
+    changeState(1);
     renderGame();
-    hotKeysListener();
 }
 
-// Запуск главного меню
+// При запуске окна
 window.onload = () => {
+    KeysListener();
     mainMenu();
 }
 
