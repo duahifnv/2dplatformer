@@ -3,9 +3,9 @@ var stateId = 0;                    // 0 - Меню / 1 - Игра
 var sceneId = 0;                    // Рендер меню на запуске
 
 var newSession;
-
 var player;
-
+var groundCollisionBlocks;
+var deathCollisionBlocks;
 function startSession() {
     newSession = new Session({
         groundCollisions: groundCollisions,
@@ -13,11 +13,11 @@ function startSession() {
         startPos: startPos,
         level_background: backgrounds.Vladikavkaz
     });
-
     player = newSession.player;
+    groundCollisionBlocks = player.groundCollisionBlocks;
+    deathCollisionBlocks = player.deathCollisionBlocks;
     newSession.groundMapFill();
     newSession.deathMapFill();
-    newSession.backgroundUpdate();
     renderGame();
 }
 
@@ -25,6 +25,7 @@ function startSession() {
 function renderGame() {
     if (!doRender) return;
     window.requestAnimationFrame(renderGame);
+    newSession.backgroundUpdate();
     newSession.groundMapUpdate();
     newSession.deathMapUpdate();
     newSession.playerUpdate();
@@ -39,9 +40,9 @@ function mainMenu() {
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
     btn_Leaderboards.addEventListener('click', () => {  // Начать игру
+        doRender = true;
         startSession();
         changeState(1);
-        doRender = true;
         // renderGame();
     });
 }
