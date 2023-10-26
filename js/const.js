@@ -57,63 +57,63 @@ const gravityC =            .5;             // Коэфициент гравит
 const defaultVelocity_X =   3;              // Стандартная скорость по оси X
 const defaultVelocity_Y =   10;             // Стандартная скорость по оси Y
 
-                                            // Двухмерный массив информации о наличии в клетке блока коллизии
-const groundCollisions2D = [];
-for(let i = 0; i < groundCollisions.length; i += tileMapWidth){
-    groundCollisions2D.push(groundCollisions.slice(i, i + tileMapWidth));
-}
+//                                             // Двухмерный массив информации о наличии в клетке блока коллизии
+// const groundCollisions2D = [];
+// for(let i = 0; i < groundCollisions.length; i += tileMapWidth){
+//     groundCollisions2D.push(groundCollisions.slice(i, i + tileMapWidth));
+// }
 
-                                       // Массив объектов класса CollisionBlock
-const groundCollisionBlocks = [];
-groundCollisions2D.forEach((row, ypos) => {
-    row.forEach((symbol, xpos) => {
-        if(symbol === groundCollisionID){
-            groundCollisionBlocks.push(new CollisionBlock({
-                position: {
-                    x: xpos * tileSize,
-                    y: ypos * tileSize
-                },
-                width: tileSize,
-                height: tileSize
-            }))
-        }
-    })
-})
+//                                        // Массив объектов класса CollisionBlock
+// const groundCollisionBlocks = [];
+// groundCollisions2D.forEach((row, ypos) => {
+//     row.forEach((symbol, xpos) => {
+//         if(symbol === groundCollisionID){
+//             groundCollisionBlocks.push(new CollisionBlock({
+//                 position: {
+//                     x: xpos * tileSize,
+//                     y: ypos * tileSize
+//                 },
+//                 width: tileSize,
+//                 height: tileSize
+//             }))
+//         }
+//     })
+// })
 
-                                        // Двухмерный массив информации о наличии в клетке блока смерти
-const deathCollisions2D = [];
-for(let i = 0; i < deathCollisions.length; i += tileMapWidth){
-    deathCollisions2D.push(deathCollisions.slice(i, i + tileMapWidth));
-}
+//                                         // Двухмерный массив информации о наличии в клетке блока смерти
+// const deathCollisions2D = [];
+// for(let i = 0; i < deathCollisions.length; i += tileMapWidth){
+//     deathCollisions2D.push(deathCollisions.slice(i, i + tileMapWidth));
+// }
 
-                                        // Массив объектов класса CollisionBlock
-const deathCollisionBlocks = [];
-deathCollisions2D.forEach((row, ypos) => {
-    row.forEach((symbol, xpos) => {
-        if (symbol === deathCollisionID){
-            deathCollisionBlocks.push(new CollisionBlock({
-                position: {
-                    x: xpos * tileSize,
-                    y: ypos * tileSize
-                },
-                width: tileSize,
-                height: tileSize
-            }))
-        }
-    })
-})
-                                        // Объект класса Player (персонаж)
-const player = new Player({
-    position: {
-        x: startPos.x,
-        y: startPos.y
-    },
-    groundCollisionBlocks,
-    deathCollisionBlocks
-})
+//                                         // Массив объектов класса CollisionBlock
+// const deathCollisionBlocks = [];
+// deathCollisions2D.forEach((row, ypos) => {
+//     row.forEach((symbol, xpos) => {
+//         if (symbol === deathCollisionID){
+//             deathCollisionBlocks.push(new CollisionBlock({
+//                 position: {
+//                     x: xpos * tileSize,
+//                     y: ypos * tileSize
+//                 },
+//                 width: tileSize,
+//                 height: tileSize
+//             }))
+//         }
+//     })
+// })
+//                                         // Объект класса Player (персонаж)
+// const player = new Player({
+//     position: {
+//         x: startPos.x,
+//         y: startPos.y
+//     },
+//     groundCollisionBlocks,
+//     deathCollisionBlocks
+// })
 
-                                        // Обьект класса Background (задний фон)
-const background = new Background({
-    source: backgrounds.Vladikavkaz,
-    scale: 1
-});
+//                                         // Обьект класса Background (задний фон)
+// const background = new Background({
+//     source: backgrounds.Vladikavkaz,
+//     scale: 1
+// });

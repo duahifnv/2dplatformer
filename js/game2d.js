@@ -1,41 +1,47 @@
-var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("scene__game")); // Отображаемый canvas
-const c = canvas.getContext("2d");                                                    // 2D режим
+ // Отображаемый canvas
+                                                 // 2D режим
 
 var doRender = true;
 var stateId = 0;                    // 0 - Меню / 1 - Игра
 var sceneId = 0;                    // Рендер меню на запуске
 
+const newSession = new Session({
+    groundCollisions: groundCollisions,
+    deathCollisions: deathCollisions,
+    startPos: startPos,
+    level_background: backgrounds.Vladikavkaz
+});
+
+const player = newSession.player;
 // Функция постоянной отрисовки поля и игрока
 function renderGame(){
+    // background.update();
+    // groundCollisionBlocks.forEach((collisionBlock) => {
+    //     collisionBlock.update();
+    // })
+    // deathCollisionBlocks.forEach((collisionBlock) => {
+    //     collisionBlock.update();
+    // })
+
+    // player.update();
+    newSession.groundMapUpdate();
+    newSession.deathMapUpdate();
+    newSession.playerUpdate();
     if (!doRender) return;
     window.requestAnimationFrame(renderGame);
-    background.update();
-    groundCollisionBlocks.forEach((collisionBlock) => {
-        collisionBlock.update();
-    })
-    deathCollisionBlocks.forEach((collisionBlock) => {
-        collisionBlock.update();
-    })
-
-    player.update();
 }
 
-// function startSession(level_name){
-//     // Объект класса Player (персонаж)
-//     const player = new Player({
-//         position: {
-//             x: startPos.x,
-//             y: startPos.y
-//         },
-//         groundCollisionBlocks,
-//         deathCollisionBlocks
-//     })
-//     // Обьект класса Background (задний фон)
-//     const background = new Background({
-//         source: backgrounds.Vladikavkaz,
-//         scale: 1
-//     });
-// }
+function startSession(){
+    // newSession.background.update();
+    newSession.groundMapFill();
+    newSession.deathMapFill();
+    newSession.backgroundUpdate();
+    // newSession.groundMapUpdate();
+    // newSession.deathMapUpdate();
+    // newSession.player.update();
+    renderGame();
+}
+
 // Главное меню
 function mainMenu() {
     // Обработчики на кнопках главного экрана
@@ -47,7 +53,8 @@ function mainMenu() {
     btn_Leaderboards.addEventListener('click', () => {  // Начать игру
         changeState(1);
         doRender = true;
-        renderGame();
+        startSession();
+        // renderGame();
     });
 }
 

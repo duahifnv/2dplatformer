@@ -11,7 +11,7 @@ class Background {
         c.drawImage(this.bg, 0, 0, canvas.width * this.scale, canvas.height * this.scale);
     }
 
-    update () {
+    update() {
         this.draw();
     }
 }

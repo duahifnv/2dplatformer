@@ -1,6 +1,6 @@
 // Класс игрока
-class Player {
-    constructor({ position, groundCollisionBlocks, deathCollisionBlocks }) {
+class Player{
+    constructor({ position, groundCollisionBlocks, deathCollisionBlocks}) {
         this.position = position;
         this.width = hitboxSize;
         this.height = hitboxSize;
