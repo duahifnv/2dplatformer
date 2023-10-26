@@ -20,22 +20,6 @@ function renderGame(){
     player.update();
 }
 
-// function startSession(level_name){
-//     // Объект класса Player (персонаж)
-//     const player = new Player({
-//         position: {
-//             x: startPos.x,
-//             y: startPos.y
-//         },
-//         groundCollisionBlocks,
-//         deathCollisionBlocks
-//     })
-//     // Обьект класса Background (задний фон)
-//     const background = new Background({
-//         source: backgrounds.Vladikavkaz,
-//         scale: 1
-//     });
-// }
 // Главное меню
 function mainMenu() {
     // Обработчики на кнопках главного экрана
