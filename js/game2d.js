@@ -1,47 +1,32 @@
- // Отображаемый canvas
-                                                 // 2D режим
-
 var doRender = true;
 var stateId = 0;                    // 0 - Меню / 1 - Игра
 var sceneId = 0;                    // Рендер меню на запуске
 
-const newSession = new Session({
-    groundCollisions: groundCollisions,
-    deathCollisions: deathCollisions,
-    startPos: startPos,
-    level_background: backgrounds.Vladikavkaz
-});
+var newSession;
 
-const player = newSession.player;
-// Функция постоянной отрисовки поля и игрока
-function renderGame(){
-    // background.update();
-    // groundCollisionBlocks.forEach((collisionBlock) => {
-    //     collisionBlock.update();
-    // })
-    // deathCollisionBlocks.forEach((collisionBlock) => {
-    //     collisionBlock.update();
-    // })
+var player;
 
-    // player.update();
-    newSession.groundMapUpdate();
-    newSession.deathMapUpdate();
-    newSession.playerUpdate();
-    if (!doRender) return;
-    window.requestAnimationFrame(renderGame);
-}
-
-function startSession(){
-    // newSession.background.update();
+function startSession() {
+    newSession = new Session({
+        groundCollisions: groundCollisions,
+        deathCollisions: deathCollisions,
+        startPos: startPos,
+        level_background: backgrounds.Vladikavkaz
+    });
+    player = newSession.player;
     newSession.groundMapFill();
     newSession.deathMapFill();
     newSession.backgroundUpdate();
-    // newSession.groundMapUpdate();
-    // newSession.deathMapUpdate();
-    // newSession.player.update();
+    // Функция постоянной отрисовки поля и игрока
     renderGame();
+    function renderGame() {
+        newSession.groundMapUpdate();
+        newSession.deathMapUpdate();
+        newSession.playerUpdate();
+        if (!doRender) return;
+        window.requestAnimationFrame(renderGame);
+    }
 }
-
 // Главное меню
 function mainMenu() {
     // Обработчики на кнопках главного экрана
