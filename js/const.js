@@ -102,7 +102,6 @@ deathCollisions2D.forEach((row, ypos) => {
         }
     })
 })
-
                                         // Объект класса Player (персонаж)
 const player = new Player({
     position: {

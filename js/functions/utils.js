@@ -46,11 +46,12 @@ function KeysListener(){
                 break;
             case 'Escape':
                 if (stateId == 1) {
-                    window.cancelAnimationFrame(renderGame); // Остановка рендера игры
+                    doRender = false; // Остановка рендера игры
                     changeState(0);
                 }
-                else changeScene(0);
-                mainMenu();
+                else {
+                    changeScene(0);
+                }
                 break;
         }
     });
