@@ -13,20 +13,23 @@ function startSession() {
         startPos: startPos,
         level_background: backgrounds.Vladikavkaz
     });
+
     player = newSession.player;
     newSession.groundMapFill();
     newSession.deathMapFill();
     newSession.backgroundUpdate();
-    // Функция постоянной отрисовки поля и игрока
     renderGame();
-    function renderGame() {
-        newSession.groundMapUpdate();
-        newSession.deathMapUpdate();
-        newSession.playerUpdate();
-        if (!doRender) return;
-        window.requestAnimationFrame(renderGame);
-    }
 }
+
+// Функция постоянной отрисовки поля и игрока
+function renderGame() {
+    if (!doRender) return;
+    window.requestAnimationFrame(renderGame);
+    newSession.groundMapUpdate();
+    newSession.deathMapUpdate();
+    newSession.playerUpdate();
+}
+
 // Главное меню
 function mainMenu() {
     // Обработчики на кнопках главного экрана
@@ -36,9 +39,9 @@ function mainMenu() {
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
     btn_Leaderboards.addEventListener('click', () => {  // Начать игру
+        startSession();
         changeState(1);
         doRender = true;
-        startSession();
         // renderGame();
     });
 }
