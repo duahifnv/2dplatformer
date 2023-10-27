@@ -50,3 +50,7 @@
     height: 80%;
     width: 80%;
 }
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+}
