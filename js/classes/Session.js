@@ -29,11 +29,10 @@ class Session {
         this.timer.timerUpdate();
     }
     stopTimer() {
-        clearInterval(this.interval);
         this.timer.clearTime();
     }
-    pauseTime() {
-        clearInterval(this.interval);
+    pauseTimer() {
+        this.timer.isPaused = (this.timer.isPaused == true) ? false : true;
     }
     backgroundUpdate() {
         this.background.update();

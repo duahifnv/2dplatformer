@@ -53,6 +53,9 @@ function KeysListener(){
                     changeScene(0);
                 }
                 break;
+            case 'KeyP':
+                newSession.pauseTimer();
+                break;
         }
     });
 

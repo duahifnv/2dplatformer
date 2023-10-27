@@ -3,7 +3,8 @@ class Timer {
         this.milliseconds = 0,
         this.seconds = 0,
         this.minutes = 0,
-        this.font = "48px Bungee"
+        this.font = "48px Bungee",
+        this.isPaused = false
     }
     updateTime() {
         this.milliseconds += frameDelay;
@@ -28,7 +29,9 @@ class Timer {
         c.fillText(this.textContent, canvas.width - 300, canvas.height - 20);
     }
     timerUpdate() {
-        this.updateTime();
+        if (!this.isPaused) {
+            this.updateTime();
+        }
         this.drawTimer();
     }
 }
