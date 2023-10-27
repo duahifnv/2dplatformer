@@ -17,7 +17,6 @@ function startSession(levelID) {
         startPos: levelCollisions.startPos,
         level_background: backgrounds[levelID - 1],
     });
-
     player = newSession.player;
     groundCollisionBlocks = player.groundCollisionBlocks;
     deathCollisionBlocks = player.deathCollisionBlocks;
@@ -33,7 +32,6 @@ function renderGame() {
     if (!doRender) return;
 
     window.requestAnimationFrame(renderGame);
-
     newSession.backgroundUpdate();
     newSession.groundMapUpdate();
     newSession.deathMapUpdate();

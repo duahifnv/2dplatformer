@@ -31,7 +31,8 @@ const stateId_Names = new Map();
 stateId_Names.set(0, 'scene__menu');
 stateId_Names.set(1, 'scene__game');
 
-
+const frameRate = 60;
+const frameDelay = (1/frameRate) * 1000
 
 const backgrounds = [
     "../img/backgrounds/vladikavkaz.png",
