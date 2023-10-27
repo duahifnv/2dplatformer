@@ -13,11 +13,15 @@ class Session {
         // Объект класса Player (персонаж)
         this.player = new Player({
             position: {
-                x: startPos.x,
-                y: startPos.y
+                x: this.startPos.x,
+                y: this.startPos.y
             },
             groundCollisionBlocks: this.groundMapFill(),
-            deathCollisionBlocks: this.deathMapFill()
+            deathCollisionBlocks: this.deathMapFill(),
+            startPos: {
+                x: this.startPos.x,
+                y: this.startPos.y
+            }
         })
     }
 

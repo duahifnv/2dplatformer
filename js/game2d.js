@@ -8,9 +8,9 @@ var groundCollisionBlocks;
 var deathCollisionBlocks;
 function startSession() {
     newSession = new Session({
-        groundCollisions: groundCollisions,
-        deathCollisions: deathCollisions,
-        startPos: startPos,
+        groundCollisions: lvl1_MapCollisions.groundC,
+        deathCollisions: lvl1_MapCollisions.deathC,
+        startPos: lvl1_MapCollisions.startPos,
         level_background: backgrounds.Vladikavkaz
     });
     player = newSession.player;
@@ -43,10 +43,15 @@ function mainMenu() {
         doRender = true;
         startSession();
         changeState(1);
-        // renderGame();
     });
 }
 
+function levelPick() {
+    // Обработчики на кнопках выбора уровня
+    btn_level1 = document.getElementById('level_1');
+    btn_level2 = document.getElementById('level_2');
+    btn_level3 = document.getElementById('level_3');
+}
 // При запуске окна
 window.onload = () => {
     KeysListener();

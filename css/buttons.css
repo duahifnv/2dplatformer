@@ -35,6 +35,5 @@
 }
 
 .button-wrapper button > p:hover {
-    transition: 0.2s ease-out;
     color: white;
 }

@@ -1,7 +1,8 @@
 // Класс игрока
 class Player{
-    constructor({ position, groundCollisionBlocks, deathCollisionBlocks}) {
+    constructor({ position, groundCollisionBlocks, deathCollisionBlocks, startPos}) {
         this.position = position;
+        this.startPos = startPos;
         this.width = hitboxSize;
         this.height = hitboxSize;
         this.velocity = {
@@ -83,8 +84,8 @@ class Player{
                     obj2: deathCollisionBlock
                 })
             ){
-                this.position.x = startPos.x;
-                this.position.y = startPos.y;
+                this.position.x = this.startPos.x;
+                this.position.y = this.startPos.y;
             }
         }
     }

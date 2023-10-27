@@ -19,6 +19,7 @@ div {
     max-height: 100%;
 }
 .game-wrapper {
+    transition: all 0.3s ease-in;
     margin: auto;
     display: block;
     width: 1280px;
