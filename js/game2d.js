@@ -1,7 +1,8 @@
-var doRender = true;
+var doRender;
 var stateId = 0;                    // 0 - Меню / 1 - Игра
 var sceneId = 0;                    // Рендер меню на запуске
 
+var levelCollisions;
 var newSession;
 var player;
 var groundCollisionBlocks;
@@ -19,6 +20,7 @@ function startSession(levelID) {
     deathCollisionBlocks = player.deathCollisionBlocks;
     newSession.groundMapFill();
     newSession.deathMapFill();
+    doRender = true;
     renderGame();
 }
 
@@ -38,32 +40,25 @@ function mainMenu() {
     btn_NewGame = document.getElementById('level-pick_btn');
     btn_NewGame.addEventListener('click', () => {   // Выбор уровня
         changeScene(1);
-        levelPick();
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
     // btn_Leaderboards.addEventListener('click', () => {  // Топ игроков
     // });
-}
-
-function levelPick() {
     // Обработчики на кнопках выбора уровня
     btn_level1 = document.getElementById('level_1');
     btn_level1.addEventListener('click', () => {
-        doRender = true;
-        startSession(1);
         changeState(1);
+        startSession(1);
     });
     btn_level2 = document.getElementById('level_2');
     btn_level2.addEventListener('click', () => {
-        doRender = true;
-        startSession(2);
         changeState(1);
+        startSession(2);
     });
     btn_level3 = document.getElementById('level_3');
     btn_level3.addEventListener('click', () => {
-        doRender = true;
-        startSession(1);
         changeState(1);
+        startSession(1);
     });
 }
 
