@@ -32,7 +32,6 @@ class Player{
         }
         this.cheatFlags = {
             flyMode: false,
-            // godMode: false
         }
     }
 

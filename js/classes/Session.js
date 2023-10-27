@@ -9,7 +9,7 @@ class Session {
             source: level_background,
             scale: 1
         }),
-
+        this.timer = new Timer(),
         // Объект класса Player (персонаж)
         this.player = new Player({
             position: {
@@ -25,6 +25,16 @@ class Session {
         })
     }
 
+    updateTimer() {
+        this.timer.timerUpdate();
+    }
+    stopTimer() {
+        clearInterval(this.interval);
+        this.timer.clearTime();
+    }
+    pauseTime() {
+        clearInterval(this.interval);
+    }
     backgroundUpdate() {
         this.background.update();
     }
