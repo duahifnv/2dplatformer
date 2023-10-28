@@ -38,13 +38,13 @@ class Session {
     }
     mapUpdate() {
         this.background.update();
+        this.timer.timerUpdate();
         this.groundCollisionBlocks.forEach((collisionBlock) => {
             collisionBlock.update();
         })
         this.deathCollisionBlocks.forEach((collisionBlock) => {
             collisionBlock.update();
         })
-        this.timer.timerUpdate();
         this.player.update();
     }
     groundMapFill() {

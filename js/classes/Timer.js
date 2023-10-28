@@ -33,7 +33,7 @@ class Timer {
         this.minutes = 0;
     }
     drawTimer() {
-        this.textContent = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}.${(this.milliseconds/10).toFixed(0).toString()}`;
+        this.textContent = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}.${(this.milliseconds / 10).toFixed(0).toString().padStart(2, '0') }`;
         c.drawImage(this.image, this.position.x, this.position.y, this.texture.width, this.texture.height);
         c.font = this.font;
         c.textBaseline = "top";

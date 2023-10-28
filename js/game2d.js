@@ -2,6 +2,7 @@ var doRender;
 var stateId = 0;                    // 0 - Меню / 1 - Игра
 var sceneId = 0;                    // Рендер меню на запуске
 
+var gamePaused = false;
 var levelCollisions;
 var newSession;                     // Сессионный объект
 var player;
@@ -30,40 +31,8 @@ function startSession(levelID) {
 // Функция постоянной отрисовки поля и игрока
 function renderGame() {
     if (!doRender) return;
-
     window.requestAnimationFrame(renderGame);
     newSession.mapUpdate();
-}
-
-// Главное меню
-function menuButtonsListener() {
-    // Обработчики на кнопках главного экрана
-    btn_NewGame = document.getElementById('level-pick_btn');
-    btn_NewGame.addEventListener('click', () => {   // Выбор уровня
-        changeScene(1);
-    });
-    // Топ игроков
-    btn_Leaderboards = document.getElementById('leaderB_btn');
-    btn_Leaderboards.addEventListener('click', () => {
-        changeState(1);
-        startSession(1);
-    });
-    // Обработчики на кнопках выбора уровня
-    btn_level1 = document.getElementById('level_1');
-    btn_level1.addEventListener('click', () => {
-        changeState(1);
-        startSession(1);
-    });
-    btn_level2 = document.getElementById('level_2');
-    btn_level2.addEventListener('click', () => {
-        changeState(1);
-        startSession(2);
-    });
-    btn_level3 = document.getElementById('level_3');
-    btn_level3.addEventListener('click', () => {
-        changeState(1);
-        startSession(1);
-    });
 }
 
 // При запуске окна

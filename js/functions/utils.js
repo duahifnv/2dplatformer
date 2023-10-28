@@ -55,7 +55,16 @@ function KeysListener(){
                 }
                 break;
             case 'KeyP':
-                newSession.pauseTimer();
+                gamePaused = (gamePaused == true) ? false : true;
+                if (gamePaused) {
+                    doRender = false;
+                    newSession.pauseTimer();
+                }
+                else {
+                    doRender = true;
+                    newSession.pauseTimer();
+                    renderGame();
+                }
                 break;
         }
     });
@@ -64,5 +73,35 @@ function KeysListener(){
         if (keyCodes.includes(event.code)) {
             keys[event.code].isPressed = false;
         }
+    });
+}
+
+// Обработчики на кнопках меню
+function menuButtonsListener() {
+    // Обработчики на кнопках главного экрана
+    btn_NewGame = document.getElementById('level-pick_btn');
+    btn_NewGame.addEventListener('click', () => {   // Выбор уровня
+        changeScene(1);
+    });
+    btn_Leaderboards = document.getElementById('leaderB_btn');
+    btn_Leaderboards.addEventListener('click', () => {
+        changeState(1);
+        startSession(1);
+    });
+    // Обработчики на кнопках выбора уровня
+    btn_level1 = document.getElementById('level_1');
+    btn_level1.addEventListener('click', () => {
+        changeState(1);
+        startSession(1);
+    });
+    btn_level2 = document.getElementById('level_2');
+    btn_level2.addEventListener('click', () => {
+        changeState(1);
+        startSession(2);
+    });
+    btn_level3 = document.getElementById('level_3');
+    btn_level3.addEventListener('click', () => {
+        changeState(1);
+        startSession(1);
     });
 }
