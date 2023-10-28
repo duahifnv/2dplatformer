@@ -1,5 +1,5 @@
 class Session {
-    constructor ({groundCollisions, deathCollisions, startPos, level_background}) {
+    constructor({ groundCollisions, deathCollisions, startPos, level_background}) {
         this.groundMap = groundCollisions,
         this.deathMap = deathCollisions,
         this.startPos = startPos,
@@ -46,6 +46,17 @@ class Session {
             collisionBlock.update();
         })
         this.player.update();
+    }
+    drawPauseMenu() {
+        c.roundRect(canvas.width / 2 - (pauseMenuSize.width / 2),
+         canvas.height / 2 - (pauseMenuSize.height / 2),
+          pauseMenuSize.width, pauseMenuSize.height, pauseMenuSize.round);
+        c.fillStyle = "rgba(0, 0, 0, 0.8)";
+        c.fill();
+        c.font = defaultFont;
+        c.textBaseline = "middle";
+        c.fillStyle = defaultFontHTML.color;
+        c.fillText('PAUSED', canvas.width / 2 - (pauseMenuSize.width / 4), canvas.height / 2);
     }
     groundMapFill() {
         // Двухмерный массив информации о наличии в клетке блока коллизии

@@ -44,11 +44,13 @@ class Player{
                 eval('this.' + property + '()');
             }
         }
+
         this.checkForDeathCollision();
         this.horizontalAcceleration();
         this.checkForHorizontalCollisions();
         this.verticalAcceleration();
         this.checkForVerticalCollisions();
+        this.checkForGameEnd();
     }
 
     horizontalAcceleration(){
@@ -75,17 +77,24 @@ class Player{
     }
 
     checkForDeathCollision() {
-        for(let i = 0; i < this.deathCollisionBlocks.length; i++){
+        for (let i = 0; i < this.deathCollisionBlocks.length; i++){
             const deathCollisionBlock = this.deathCollisionBlocks[i];
             if (
                 collision({
                     obj1: this,
                     obj2: deathCollisionBlock
-                })
+                }) || (this.position.y > canvas.height)
             ){
                 this.position.x = this.startPos.x;
                 this.position.y = this.startPos.y;
             }
+        }
+    }
+
+    checkForGameEnd() {
+        if ((this.position.x > canvas.width) || (this.position.x + this.width < 0)) {
+            doRender = false;
+            changeState(0);
         }
     }
 

@@ -57,8 +57,9 @@ function KeysListener(){
             case 'KeyP':
                 gamePaused = (gamePaused == true) ? false : true;
                 if (gamePaused) {
-                    doRender = false;
                     newSession.pauseTimer();
+                    newSession.drawPauseMenu();
+                    doRender = false;
                 }
                 else {
                     doRender = true;

@@ -7,7 +7,7 @@ class Timer {
         this.milliseconds = 0,
         this.seconds = 0,
         this.minutes = 0,
-        this.font = "48px Bungee",
+        this.font = defaultFont,
         this.isPaused = false,
         this.image = new Image(),
         this.image.src = '../img/buttons/silver_button.png',
@@ -35,9 +35,9 @@ class Timer {
     drawTimer() {
         this.textContent = `${this.minutes.toString().padStart(2, '0')}:${this.seconds.toString().padStart(2, '0')}.${(this.milliseconds / 10).toFixed(0).toString().padStart(2, '0') }`;
         c.drawImage(this.image, this.position.x, this.position.y, this.texture.width, this.texture.height);
-        c.font = this.font;
+        c.font = defaultFont;
         c.textBaseline = "top";
-        c.fillStyle = "white";
+        c.fillStyle = defaultFontHTML.color;
         c.fillText(this.textContent, this.position.x + textOffset.x, this.position.y + textOffset.y);
     }
     timerUpdate() {
