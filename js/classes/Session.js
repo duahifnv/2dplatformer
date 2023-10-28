@@ -30,17 +30,22 @@ class Session {
         })
     }
 
-    updateTimer() {
-        this.timer.timerUpdate();
-    }
     stopTimer() {
         this.timer.clearTime();
     }
     pauseTimer() {
         this.timer.isPaused = (this.timer.isPaused == true) ? false : true;
     }
-    backgroundUpdate() {
+    mapUpdate() {
         this.background.update();
+        this.groundCollisionBlocks.forEach((collisionBlock) => {
+            collisionBlock.update();
+        })
+        this.deathCollisionBlocks.forEach((collisionBlock) => {
+            collisionBlock.update();
+        })
+        this.timer.timerUpdate();
+        this.player.update();
     }
     groundMapFill() {
         // Двухмерный массив информации о наличии в клетке блока коллизии
@@ -65,19 +70,6 @@ class Session {
             })
         })
         return this.groundCollisionBlocks;
-    }
-    playerUpdate() {
-        this.player.update();
-    }
-    groundMapUpdate() {
-        this.groundCollisionBlocks.forEach((collisionBlock) => {
-            collisionBlock.update();
-        })
-    }
-    deathMapUpdate() {
-        this.deathCollisionBlocks.forEach((collisionBlock) => {
-            collisionBlock.update();
-        })
     }
     deathMapFill() {
         // Двухмерный массив информации о наличии в клетке блока смерти
