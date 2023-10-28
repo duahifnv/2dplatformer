@@ -35,8 +35,8 @@ function renderGame() {
     newSession.backgroundUpdate();
     newSession.groundMapUpdate();
     newSession.deathMapUpdate();
-    newSession.playerUpdate();
     newSession.updateTimer();
+    newSession.playerUpdate();
 }
 
 // Главное меню

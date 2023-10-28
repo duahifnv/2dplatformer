@@ -9,7 +9,12 @@ class Session {
             source: level_background,
             scale: 1
         }),
-        this.timer = new Timer(),
+        this.timer = new Timer({
+            position: {
+                x: canvas.width - 310,
+                y: 10
+            }
+        }),
         // Объект класса Player (персонаж)
         this.player = new Player({
             position: {

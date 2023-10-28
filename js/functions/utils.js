@@ -31,6 +31,7 @@ function KeysListener(){
             case 'KeyR':
                 player.position.x = newSession.startPos.x;
                 player.position.y = newSession.startPos.y;
+                newSession.stopTimer();
                 break;
             case 'KeyH':
                 player.drawFlags.drawPlayerHitbox = (player.drawFlags.drawPlayerHitbox === false);

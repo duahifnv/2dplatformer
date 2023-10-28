@@ -43,6 +43,10 @@ const backgrounds = [
 canvas.width =              1280;           // Ширина Canvas поля в пикселах
 canvas.height =             704;            // Высота Canvas поля в пикселах
 
+const textOffset = {
+    x: 28,
+    y: 22
+}
 const tileMapWidth =        40;             // Ширина карты в клетках
 const tileMapHeight =       30;             // Высота карты в клетках
 const tileSize =            32;             // Размер одной клетки в пикселах
