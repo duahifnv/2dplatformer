@@ -11,9 +11,11 @@
     width: 80%;
     height: 80%;
 }
-.pick-title {
+.title {
     text-align: center;
     font-size: 44px;
+}
+#level-title {
     height: 20%;
 }
 .pick-wrapper__outer {

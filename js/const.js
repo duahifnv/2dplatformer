@@ -28,6 +28,7 @@ for (let name of keyCodes) {
 const sceneId_Names = new Map();
 sceneId_Names.set(0, 'scene__main-menu');
 sceneId_Names.set(1, 'scene__level-pick');
+sceneId_Names.set(2, 'scene__leaderboards');
 
 const stateId_Names = new Map();
 stateId_Names.set(0, 'scene__menu');
@@ -42,7 +43,7 @@ const backgrounds = [
 ]
 
 canvas.width =              1280;           // Ширина Canvas поля в пикселах
-canvas.height =             704;            // Высота Canvas поля в пикселах
+canvas.height =             700;            // Высота Canvas поля в пикселах
 
 const defaultFontHTML = {
     name: 'Bungee',

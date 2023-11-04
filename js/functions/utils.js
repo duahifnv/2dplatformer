@@ -86,9 +86,9 @@ function menuButtonsListener() {
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
     btn_Leaderboards.addEventListener('click', () => {
-        changeState(1);
-        startSession(1);
+        changeScene(2);
     });
+
     // Обработчики на кнопках выбора уровня
     btn_level1 = document.getElementById('level_1');
     btn_level1.addEventListener('click', () => {
