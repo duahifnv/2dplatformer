@@ -1,33 +1,38 @@
-table {
+caption {
+    font-size: 42px;
+    color: #e6feff;
+}
+
+.scroll-table {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 90%;
+}
+
+.scroll-table table{
     margin: auto;
     width: 100%;
-    max-height: 80%;
+    height: 15%;
     table-layout: fixed;
     border-collapse: collapse;
     font-size: 20px;
 }
 
-caption {
-    text-align: start;
-    font-size: 42px;
-    color: #e6feff;
+.scroll-table-body {
+    overflow-y: auto;
+    height: 58%;
+    width: 100%;
 }
 
-thead {
-    border: 4px solid white;
-    border-radius: 100px;
+.scroll-table-body tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.scroll-table-body::-webkit-scrollbar {
+    width: 0;
 }
 
-thead th:nth-child(1) {
-    width: 10%;
-}
-
-thead th:nth-child(2) {
-    width: 50%;
-}
-
-thead th:nth-child(3) {
-    width: 40%;
+thead th{
+    font-size: 28px;
 }
 
 tbody td {
