@@ -36,6 +36,10 @@ class Session {
     pauseTimer() {
         this.timer.isPaused = (this.timer.isPaused == true) ? false : true;
     }
+    pushTime() {
+        this.endTime = newSession.timer.getTime();
+        DataCheck(this.endTime);
+    }
     mapUpdate() {
         this.background.update();
         this.timer.timerUpdate();

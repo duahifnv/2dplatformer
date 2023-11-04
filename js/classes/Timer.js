@@ -40,6 +40,14 @@ class Timer {
         c.fillStyle = defaultFontHTML.color;
         c.fillText(this.textContent, this.position.x + textOffset.x, this.position.y + textOffset.y);
     }
+    getTime() {
+        this.time = {
+            minutes: this.minutes,
+            seconds: this.seconds,
+            milliseconds: Math.round(this.milliseconds)
+        }
+        return this.time;
+    }
     timerUpdate() {
         if (!this.isPaused) {
             this.updateTime();

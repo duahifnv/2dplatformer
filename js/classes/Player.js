@@ -93,6 +93,7 @@ class Player{
 
     checkForGameEnd() {
         if ((this.position.x > canvas.width) || (this.position.x + this.width < 0)) {
+            newSession.pushTime();
             doRender = false;
             changeState(0);
         }
