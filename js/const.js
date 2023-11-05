@@ -178,9 +178,11 @@ const lvl2_MapCollisions = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1451, 1451, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     startPos: {
-        x: tileSize * 3,
+        x: tileSize * 4,
         y: tileSize * 5
     }
 }
 
 const MapCollisions = [lvl1_MapCollisions, lvl2_MapCollisions];
+
+const MaxListSize = 10;

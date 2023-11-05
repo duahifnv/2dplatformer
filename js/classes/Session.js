@@ -31,14 +31,12 @@ class Session {
     }
 
     stopTimer() {
+        this.endTime = this.timer.getTime();
         this.timer.clearTime();
+        return this.endTime;
     }
     pauseTimer() {
         this.timer.isPaused = (this.timer.isPaused == true) ? false : true;
-    }
-    pushTime() {
-        this.endTime = newSession.timer.getTime();
-        DataCheck(this.endTime);
     }
     mapUpdate() {
         this.background.update();

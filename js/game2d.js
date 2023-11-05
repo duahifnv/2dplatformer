@@ -9,7 +9,6 @@ var player;
 var groundCollisionBlocks;
 var deathCollisionBlocks;
 
-var ScoreData = [];
 // Функция начала игровой сессии
 function startSession(levelID) {
     levelCollisions = MapCollisions[levelID - 1];
@@ -27,18 +26,6 @@ function startSession(levelID) {
     newSession.deathMapFill();
     doRender = true;
     renderGame();
-}
-
-function DataCheck(data) {
-    let newData = new LocalData('user', data);
-    ScoreData.push(newData);
-    DataPush();
-}
-
-function DataPush() {
-    for (score of ScoreData){
-        score.localSet();
-    }
 }
 
 // Функция постоянной отрисовки поля и игрока

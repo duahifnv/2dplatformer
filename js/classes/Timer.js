@@ -41,12 +41,8 @@ class Timer {
         c.fillText(this.textContent, this.position.x + textOffset.x, this.position.y + textOffset.y);
     }
     getTime() {
-        this.time = {
-            minutes: this.minutes,
-            seconds: this.seconds,
-            milliseconds: Math.round(this.milliseconds)
-        }
-        return this.time;
+        this.totalTime = Math.round(this.milliseconds) + (this.seconds + (60*this.minutes)) * 1000;
+        return this.totalTime;
     }
     timerUpdate() {
         if (!this.isPaused) {
