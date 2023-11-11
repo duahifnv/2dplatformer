@@ -51,7 +51,7 @@ function KeysListener(){
                     changeState(0);
                 }
                 else {
-                    changeScene(0);
+                    changeScene(0, 'block');
                 }
                 break;
             case 'KeyP':
@@ -82,11 +82,11 @@ function menuButtonsListener() {
     // Обработчики на кнопках главного экрана
     btn_NewGame = document.getElementById('level-pick_btn');
     btn_NewGame.addEventListener('click', () => {   // Выбор уровня
-        changeScene(1);
+        changeScene(1, 'block');
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
     btn_Leaderboards.addEventListener('click', () => {
-        changeScene(2);
+        changeScene(2, 'flex');
     });
 
     // Обработчики на кнопках выбора уровня

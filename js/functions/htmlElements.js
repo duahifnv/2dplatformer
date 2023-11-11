@@ -11,8 +11,8 @@ function changeState(id_next) {
     stateId = id_next;
     showElem(document.getElementById(stateId_Names.get(stateId)), 'flex');
 }
-function changeScene(id_next) {
+function changeScene(id_next, display_style) {
     hideElem(document.getElementById(sceneId_Names.get(sceneId)));
     sceneId = id_next;
-    showElem(document.getElementById(sceneId_Names.get(sceneId)), 'block');
+    showElem(document.getElementById(sceneId_Names.get(sceneId)), display_style);
 }

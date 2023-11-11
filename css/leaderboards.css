@@ -2,12 +2,30 @@
     display: none;
 }
 
-.leaderboards {
+.leaderboards-wrapper {
     display: flex;
-    margin: 20px auto;
+    margin: 20px 0;
     flex-direction: column;
     width: 80%;
-    height: 90%;
+    height: 95%;
+}
+.btn-wrapper_outer {
+    width: 10%;
+    height: 100%;
+}
+.btn-wrapper_inner {
+    margin-top: 350px;
+    width: 100%;
+    height: 15%;
+}
+.nav-btn {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+}
+.nav-btn img {
+    max-width: 100%;
+    height: 100%;
 }
 .lb-title-wrapper {
     height: 20%;
@@ -15,4 +33,12 @@
 
 .lb-table-wrapper {
     height: 80%;
+}
+
+#level1-table {
+    display: block;
+}
+
+#level2-table, #level3-table {
+    display: none;
 }
