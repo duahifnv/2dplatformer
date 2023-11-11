@@ -1,20 +1,22 @@
 class Session {
-    constructor({ groundCollisions, deathCollisions, startPos, level_background}) {
-        this.groundMap = groundCollisions,
-        this.deathMap = deathCollisions,
-        this.startPos = startPos,
+    constructor({ levelID }) {
+        this.levelCollisions = MapCollisions[levelID - 1];
+        this.level_background = backgrounds[levelID - 1];
+        this.groundMap = this.levelCollisions.groundC;
+        this.deathMap = this.levelCollisions.deathC;
+        this.startPos = this.levelCollisions.startPos;
         // Обьект класса Background (задний фон)
-        this.background_name = level_background,
+        this.background_name = this.level_background;
         this.background = new Background({
-            source: level_background,
+            source: this.level_background,
             scale: 1
-        }),
+        });
         this.timer = new Timer({
             position: {
                 x: canvas.width - 310,
                 y: 10
             }
-        }),
+        });
         // Объект класса Player (персонаж)
         this.player = new Player({
             position: {
@@ -26,8 +28,9 @@ class Session {
             startPos: {
                 x: this.startPos.x,
                 y: this.startPos.y
-            }
-        })
+            },
+            levelID: levelID
+        });
     }
 
     stopTimer() {

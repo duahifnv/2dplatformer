@@ -13,10 +13,7 @@ var deathCollisionBlocks;
 function startSession(levelID) {
     levelCollisions = MapCollisions[levelID - 1];
     newSession = new Session({
-        groundCollisions: levelCollisions.groundC,
-        deathCollisions: levelCollisions.deathC,
-        startPos: levelCollisions.startPos,
-        level_background: backgrounds[levelID - 1],
+        levelID: levelID,
     });
     player = newSession.player;
     groundCollisionBlocks = player.groundCollisionBlocks;

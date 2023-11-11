@@ -1,8 +1,9 @@
 // Класс игрока
 class Player{
-    constructor({ position, groundCollisionBlocks, deathCollisionBlocks, startPos}) {
+    constructor({ position, groundCollisionBlocks, deathCollisionBlocks, startPos, levelID }) {
         this.position = position;
         this.startPos = startPos;
+        this.levelID = levelID;
         this.width = hitboxSize;
         this.height = hitboxSize;
         this.velocity = {
@@ -94,7 +95,7 @@ class Player{
     checkForGameEnd() {
         if ((this.position.x > canvas.width) || (this.position.x + this.width < 0)) {
             this.endTime = newSession.stopTimer();
-            placeLogic(this.endTime);
+            placeLogic(this.endTime, this.levelID);
             doRender = false;
             changeState(0);
         }
