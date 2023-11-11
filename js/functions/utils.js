@@ -103,6 +103,6 @@ function menuButtonsListener() {
     btn_level3 = document.getElementById('level_3');
     btn_level3.addEventListener('click', () => {
         changeState(1);
-        startSession(1);
+        startSession(3);
     });
 }

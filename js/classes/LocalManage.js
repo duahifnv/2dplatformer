@@ -1,8 +1,19 @@
 class LocalManage {
     constructor(endtime, levelID){
-        this.time = endtime,
-        this.levelID = levelID,
-        this.username = ''
+        this.time = endtime;
+        this.levelID = levelID;
+        this.prefix = levelID.toString() + '-';
+        this.username = '';
+        this.listSize;
+    }
+    updateSize() {
+        this.listSize = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if (key.charAt(0) === this.levelID.toString()) {
+                this.listSize++;
+            }
+        }
     }
     // Алгоритм сдвига всех элементов на 1 позицию вниз
     updateList(startPos) {
@@ -11,7 +22,7 @@ class LocalManage {
             time: this.getTime(startPos)
         }
         let itemBot = {};
-        for (let i = startPos + 1; i < localStorage.length + 1; i++) {
+        for (let i = startPos + 1; i < this.listSize + 1; i++) {
             itemBot = {
                 username: this.getUsername(i),
                 time: this.getTime(i)
@@ -19,8 +30,8 @@ class LocalManage {
             this.setTime(i, itemTop.username, itemTop.time);
             itemTop = itemBot;
         }
-        if (localStorage.length < MaxListSize) {
-            this.setTime(localStorage.length + 1, itemTop.username, itemTop.time);
+        if (this.listSize < MaxListSize) {
+            this.setTime(this.listSize + 1, itemTop.username, itemTop.time);
         }
     }
 
@@ -29,16 +40,16 @@ class LocalManage {
         if (placement > localStorage.length) {
             return -1;
         }
-        let timeObj = JSON.parse(localStorage.getItem(placement.toString()));
+        let timeObj = JSON.parse(localStorage.getItem(this.prefix + placement.toString()));
         return timeObj.time;
     }
 
     // Получить имя по месту
     getUsername(placement) {
-        if (placement > localStorage.length) {
+        if (placement > this.listSize) {
             return -1
         }
-        let nameObj = JSON.parse(localStorage.getItem(placement.toString()));
+        let nameObj = JSON.parse(localStorage.getItem(this.prefix + placement.toString()));
         return nameObj.username;
     }
 
@@ -49,43 +60,41 @@ class LocalManage {
             username: this.username,
             time: this.time
         }
-        if (localStorage.length == 0) {    // Если список пуст и сравнивать не с чем
-            localStorage.setItem('1', JSON.stringify(itemObj));
+        if (this.listSize == 0) {    // Если список пуст и сравнивать не с чем
+            localStorage.setItem(this.prefix + '1', JSON.stringify(itemObj));
         }
         else {
             // Находим подходящее место для результата
-            for (let i = 0; i < localStorage.length; i++) {
+            for (let i = 0; i < this.listSize; i++) {
                 if (this.time < this.getTime(i + 1)) {
                     this.updateList(i + 1);
-                    localStorage.setItem((i + 1).toString(), JSON.stringify(itemObj));
+                    localStorage.setItem(this.prefix + (i + 1).toString(), JSON.stringify(itemObj));
                     isPlaced = true;
                     break;
                 }
             }
             // Если список не полон, добавляем элемент в конец
-            if ((!isPlaced) && (localStorage.length < MaxListSize)) {
-                localStorage.setItem((localStorage.length + 1).toString(), JSON.stringify(itemObj));
+            if ((!isPlaced) && (this.listSize < MaxListSize)) {
+                localStorage.setItem(this.prefix + (this.listSize + 1).toString(), JSON.stringify(itemObj));
             }
         }
     }
 
     // Добавить время в нужное место
-    setTime(placement) {
+    setTime(placement, username, time) {
         let itemObj = {
-            username: this.username,
-            time: this.time
+            username: username,
+            time: time
         }
-        localStorage.setItem(placement.toString(), JSON.stringify(itemObj));
+        localStorage.setItem(this.prefix + placement.toString(), JSON.stringify(itemObj));
     }
-
-
 
     // Убрать время пользователя
     removeTime() {
         for (let i = 0; i < localStorage.length; i++) {
-            let key = localStorage.key(i);
+            let key = localStorage.key(i);      // string
             let item = JSON.parse(localStorage.getItem(key));
-            if (this.username === item.username) {
+            if (this.username === item.username && key.charAt(0) === this.levelID.toString()) {
                 localStorage.removeItem(key);   // Удаляем обьект из списка
             }
         }
@@ -97,7 +106,7 @@ class LocalManage {
         for (let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
             let item = JSON.parse(localStorage.getItem(key));
-            if (this.username === item.username) {
+            if (this.username === item.username && key.charAt(0) === this.levelID.toString()) {
                 return item.time;    // Время в мс
             }
         }

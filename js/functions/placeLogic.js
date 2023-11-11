@@ -1,7 +1,8 @@
 function placeLogic(endTime, levelID) {
     playerT = new LocalManage(endTime, levelID);
+    playerT.updateSize();
     // Если список заполнен полностью - сравнение полученного времени с худшим
-    if ((localStorage.length === MaxListSize) && (endTime > playerT.getTime(localStorage.length))) {
+    if ((playerT.listSize === MaxListSize) && (endTime > playerT.getTime(playerT.listSize))) {
         return;
     }
     // Запрос имени игрока
@@ -12,6 +13,7 @@ function placeLogic(endTime, levelID) {
         if (prevTime) {    // Игрок уже есть в списке
             if (endTime < prevTime) {
                 playerT.removeTime();
+                playerT.updateSize();
                 playerT.placeTime();
             }
             else {
