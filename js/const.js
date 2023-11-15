@@ -36,6 +36,7 @@ stateId_Names.set(1, 'scene__game');
 const frameRate = 60;
 const frameDelay = (1/frameRate) * 1000
 
+const levelCount = 3;
 const backgrounds = [
     "../img/backgrounds/level1_bg.png",
     "../img/backgrounds/level2_bg.png",

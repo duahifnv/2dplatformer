@@ -39,6 +39,10 @@
     display: block;
 }
 
-#level2-table, #level3-table {
+#level2-table, #level3-table, #nav-btn-left {
     display: none;
+}
+
+#nav-btn-right {
+    display: inline-block;
 }
