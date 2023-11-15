@@ -99,7 +99,7 @@ function tablesUpdate() {
         var node = {
             place: placement,
             username: obj.username,
-            time: obj.time
+            time: (obj.time / 1000).toString().padEnd(5, '0')   // Перевод из мс в с
         }
         tableNotes[levelID - 1].push(node);
     }
