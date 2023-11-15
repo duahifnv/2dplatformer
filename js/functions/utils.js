@@ -86,6 +86,7 @@ function menuButtonsListener() {
     });
     btn_Leaderboards = document.getElementById('leaderB_btn');
     btn_Leaderboards.addEventListener('click', () => {
+        tablesUpdate();
         changeScene(2, 'flex');
     });
 
@@ -104,5 +105,15 @@ function menuButtonsListener() {
     btn_level3.addEventListener('click', () => {
         changeState(1);
         startSession(3);
+    });
+
+    // Обработчики на кнопках выбора таблиц рекордов
+    btn_prev_table = document.getElementById('nav-btn-left');
+    btn_prev_table.addEventListener('click', () => {
+        tableSwitch('prev');
+    });
+    btn_next_table = document.getElementById('nav-btn-right');
+    btn_next_table.addEventListener('click', () => {
+        tableSwitch('next');
     });
 }
