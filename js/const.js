@@ -28,6 +28,7 @@ const sceneId_Names = new Map();
 sceneId_Names.set(0, 'scene__main-menu');
 sceneId_Names.set(1, 'scene__level-pick');
 sceneId_Names.set(2, 'scene__leaderboards');
+sceneId_Names.set(3, 'scene__credits');
 
 const stateId_Names = new Map();
 stateId_Names.set(0, 'scene__menu');

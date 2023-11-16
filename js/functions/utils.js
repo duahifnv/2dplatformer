@@ -89,6 +89,10 @@ function menuButtonsListener() {
         tablesUpdate();
         changeScene(2, 'flex');
     });
+    btn_Credits = document.getElementById('credits_btn');
+    btn_Credits.addEventListener('click', () => {
+        changeScene(3, 'block');
+    });
 
     // Обработчики на кнопках выбора уровня
     btn_level1 = document.getElementById('level_1');
