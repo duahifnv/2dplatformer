@@ -46,6 +46,10 @@ function KeysListener(){
                 player.drawFlags.drawGroundCollisionBlocks = (player.drawFlags.drawGroundCollisionBlocks === false);
                 break;
             case 'Escape':
+                if (inputState) {
+                    inputState = false;
+                    hideElem(document.getElementById('input_menu-wrapper'));
+                }
                 if (stateId == 1) {
                     doRender = false; // Остановка рендера игры
                     changeState(0);
@@ -65,6 +69,13 @@ function KeysListener(){
                     doRender = true;
                     newSession.pauseTimer();
                     renderGame();
+                }
+                break;
+            case 'Enter':
+                if (inputState) {
+                    placeTime(newSession.endTime);
+                    hideElem(document.getElementById('input_menu-wrapper'));
+                    changeState(0);
                 }
                 break;
         }

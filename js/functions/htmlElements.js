@@ -94,7 +94,7 @@ function tablesUpdate() {
     for (let i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
         var levelID = key.charAt(0);
-        var placement = key.charAt(2);
+        var placement = key.charAt(2) + key.charAt(3);
         var obj = JSON.parse(localStorage.getItem(key));
         var node = {
             place: placement,

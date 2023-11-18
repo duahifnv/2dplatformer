@@ -32,7 +32,7 @@ class Player{
             drawDeathCollisionBlocks: false,
         }
         this.cheatFlags = {
-            flyMode: false,
+            flyMode: false
         }
     }
 
@@ -95,9 +95,8 @@ class Player{
     checkForGameEnd() {
         if ((this.position.x > canvas.width) || (this.position.x + this.width < 0)) {
             this.endTime = newSession.stopTimer();
-            placeLogic(this.endTime, this.levelID);
             doRender = false;
-            changeState(0);
+            placeLogic(this.endTime, this.levelID);
         }
     }
 

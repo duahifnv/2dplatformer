@@ -63,6 +63,18 @@ class Session {
         c.fillStyle = defaultFontHTML.color;
         c.fillText('PAUSED', canvas.width / 2 - (pauseMenuSize.width / 4), canvas.height / 2);
     }
+
+    drawInputMenu(endTime, noInput) {
+        this.input_menu = document.getElementById('input_menu-wrapper');
+        this.time_info = (endTime / 1000).toString().padEnd(5, '0');
+        document.getElementById('final_time').innerHTML = this.time_info;
+        showElem(this.input_menu, 'block');
+        if (noInput == true) {
+            this.username_form = document.getElementById('nickname-form');
+            hideElem(this.username_form);
+        }
+    }
+
     groundMapFill() {
         // Двухмерный массив информации о наличии в клетке блока коллизии
         this.groundCollisions2D = [];

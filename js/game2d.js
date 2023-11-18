@@ -3,6 +3,7 @@ var stateId = 0;                    // 0 - Меню / 1 - Игра
 var sceneId = 0;                    // Рендер меню на запуске
 
 var gamePaused = false;
+var inputState = false;
 var levelCollisions;
 var newSession;                     // Сессионный объект
 var player;
