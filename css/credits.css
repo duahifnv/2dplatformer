@@ -4,15 +4,44 @@
     display: none;
 }
 
-#credits-wrapper {
-    max-width: 80%;
+#credits-wrapper__outer {
+    width: 80%;
     height: 100%;
     margin: auto;
-    display: flex;
-    flex-direction: column;
 }
 
+#credits-wrapper__inner {
+    padding: 5% 0;
+    width: 100%;
+    height: 100%;
+}
 #credits-wrapper img {
     max-width: 100%;
     max-height: 100%;
+}
+#credits-title {
+    width: 100%;
+    height: 25%;
+}
+#credits-logo {
+    margin: auto;
+    width: 200px;
+    height: 100%;
+}
+#credits-logo img {
+    margin: 0 20px;
+    max-width: 100%;
+    height: 100%;
+}
+#credits-text {
+    text-align: center;
+    padding: 0 10%;
+    overflow: hidden;
+    height: 75%;
+}
+#scroll-text {
+    transition: all 10s linear;
+}
+#scroll-text:active {
+    transform: translateY(-150%);
 }

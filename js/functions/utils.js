@@ -48,8 +48,8 @@ function KeysListener(){
             case 'Escape':
                 if (inputState) {
                     inputState = false;
-                    hideElem(document.getElementById('input_menu-wrapper'));
                 }
+                hideElem(document.getElementById('input_menu-wrapper'));
                 if (stateId == 1) {
                     doRender = false; // Остановка рендера игры
                     changeState(0);
