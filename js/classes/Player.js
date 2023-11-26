@@ -2,6 +2,9 @@
 class Player{
     constructor({ position, groundCollisionBlocks, deathCollisionBlocks, startPos, levelID }) {
         this.position = position;
+        this.boostToggle = true;
+        this.boostUpX = false;
+        this.boostUpY = false;
         this.startPos = startPos;
         this.levelID = levelID;
         this.width = hitboxSize;
@@ -12,14 +15,15 @@ class Player{
         };
         this.groundCollisionBlocks = groundCollisionBlocks;
         this.deathCollisionBlocks = deathCollisionBlocks;
-        var playerTexture = '../img/characters/player.png';
+        this.playerTexture = '../img/characters/player.png';
+        this.playerBoostTexture = '../img/characters/player_boost.png';
 
         this.sprite = new Sprite({
             position: {
                 x: this.position.x - textureOffset,
                 y: this.position.y - textureOffset
             },
-            imageSrc: playerTexture,
+            imageSrc: this.playerTexture,
             size: {
                 width: textureSize,
                 height: textureSize
@@ -47,6 +51,7 @@ class Player{
         }
 
         this.checkForDeathCollision();
+        this.checkGroundUnder();
         this.horizontalAcceleration();
         this.checkForHorizontalCollisions();
         this.verticalAcceleration();
@@ -54,22 +59,25 @@ class Player{
         this.checkForGameEnd();
     }
 
-    horizontalAcceleration(){
+    horizontalAcceleration() {
         this.velocity.x = 0;
         if (keys['KeyD'].isPressed) {
-            this.velocity.x = defaultVelocity_X;
+            this.velocity.x = defaultVelocity_X + ((this.boostUpX) * boostVelocity_X);
             this.sprite.flipByX(true);
         }
         else if (keys['KeyA'].isPressed) {
-            this.velocity.x = -defaultVelocity_X;
+            this.velocity.x = -(defaultVelocity_X + ((this.boostUpX) * boostVelocity_X));
             this.sprite.flipByX(false);
         }
         this.position.x += this.velocity.x;
     }
 
     verticalAcceleration() {
-        this.position.y += this.velocity.y;
+        if (this.boostUpY) {
+            this.velocity.y = -boostVelocity_Y;
+        }
         this.velocity.y += gravityC;
+        this.position.y += this.velocity.y;
     }
 
     spritePositionUpdate() {
@@ -77,6 +85,14 @@ class Player{
         this.sprite.position.y = this.position.y - textureOffset;
     }
 
+    checkGroundUnder() {
+        for (let i = 0; i < groundCollisionBlocks.length; i++) {
+            if (this.position.y + this.height === groundCollisionBlocks[i].position.y - 0.01) {
+                this.boostToggle = true;
+                return true;
+            }
+        }
+    }
     checkForDeathCollision() {
         for (let i = 0; i < this.deathCollisionBlocks.length; i++){
             const deathCollisionBlock = this.deathCollisionBlocks[i];

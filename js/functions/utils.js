@@ -16,18 +16,31 @@ function KeysListener(){
         }
         switch (event.code) {
             case 'KeyW':
+            case 'Space':
                 if (player.cheatFlags.flyMode) {
                     player.velocity.y = -defaultVelocity_Y;
                 }
                 else {
-                    for (let i = 0; i < groundCollisionBlocks.length; i++) {
-                        // Проверка на наличие "земли под ногами"
-                        if (player.position.y + player.height === groundCollisionBlocks[i].position.y - 0.01) {
-                            player.velocity.y = -defaultVelocity_Y;
-                        }
+                    if (player.checkGroundUnder()) {
+                        player.velocity.y = -defaultVelocity_Y;
                     }
                 }
             break;
+            case 'ShiftLeft':
+                if (player.boostToggle) {
+                    player.boostToggle = false;
+                    player.boostUpX = true;
+                    if (keys['KeyW'].isPressed || keys['Space'].isPressed) {
+                        player.boostUpY = true;
+                    }
+                    player.sprite.image.src = player.playerBoostTexture;
+                    setTimeout(() => {
+                        player.boostUpX = false;
+                        player.boostUpY = false;
+                        player.sprite.image.src = player.playerTexture;
+                    }, boostTimeout);
+                }
+                break;
             case 'KeyR':
                 player.position.x = newSession.startPos.x;
                 player.position.y = newSession.startPos.y;
