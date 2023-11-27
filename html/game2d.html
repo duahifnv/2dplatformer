@@ -200,6 +200,7 @@
             <video width="1280" height="720" autoplay muted loop id="background-vid">
                     <source src="/video/CelesteAnimated.mp4">
             </video>
+
         </div>
         <canvas id="scene__game">
             <p>You're browser does not support the required functionality to play this game.</p>
@@ -222,7 +223,6 @@
             </div>
         </div>
     </div>
-
     <script>
         var canvas = /** @type {HTMLCanvasElement} */ (document.getElementById("scene__game"));
         const c = canvas.getContext("2d");
@@ -240,5 +240,6 @@
     <script src="/js/functions/htmlElements.js"></script>
     <script src="/js/game2d.js"></script>
     <script src="/js/functions/utils.js"></script>
+    <script src="/js/functions/audio.js"></script>
 </body>
 </html>

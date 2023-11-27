@@ -93,6 +93,7 @@ class Player{
             }
         }
     }
+
     checkForDeathCollision() {
         for (let i = 0; i < this.deathCollisionBlocks.length; i++){
             const deathCollisionBlock = this.deathCollisionBlocks[i];

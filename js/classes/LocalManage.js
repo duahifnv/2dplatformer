@@ -96,6 +96,7 @@ class LocalManage {
             let item = JSON.parse(localStorage.getItem(key));
             if (this.username === item.username && key.charAt(0) === this.levelID.toString()) {
                 localStorage.removeItem(key);   // Удаляем обьект из списка
+                return key.charAt(2);
             }
         }
     }
