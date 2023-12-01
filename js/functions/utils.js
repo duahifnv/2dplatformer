@@ -89,7 +89,6 @@ function KeysListener(){
                 break;
             case 'Enter':
                 if (inputState) {
-                    newSession.mp3.stopMp3();
                     placeTime(newSession.endTime);
                     hideElem(document.getElementById('input_menu-wrapper'));
                     changeState(0);
