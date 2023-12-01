@@ -22,6 +22,8 @@ function startSession(levelID) {
 
     newSession.groundMapFill();
     newSession.deathMapFill();
+
+    newSession.mp3.playMp3();
     doRender = true;
     renderGame();
 }

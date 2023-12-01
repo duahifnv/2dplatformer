@@ -64,6 +64,7 @@ function KeysListener(){
                 }
                 hideElem(document.getElementById('input_menu-wrapper'));
                 if (stateId == 1) {
+                    newSession.mp3.stopMp3();
                     doRender = false; // Остановка рендера игры
                     changeState(0);
                 }
@@ -74,11 +75,13 @@ function KeysListener(){
             case 'KeyP':
                 gamePaused = (gamePaused == true) ? false : true;
                 if (gamePaused) {
+                    newSession.mp3.pauseMp3();
                     newSession.pauseTimer();
                     newSession.drawPauseMenu();
                     doRender = false;
                 }
                 else {
+                    newSession.mp3.playMp3();
                     doRender = true;
                     newSession.pauseTimer();
                     renderGame();
@@ -86,6 +89,7 @@ function KeysListener(){
                 break;
             case 'Enter':
                 if (inputState) {
+                    newSession.mp3.stopMp3();
                     placeTime(newSession.endTime);
                     hideElem(document.getElementById('input_menu-wrapper'));
                     changeState(0);

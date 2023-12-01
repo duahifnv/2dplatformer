@@ -111,6 +111,7 @@ class Player{
 
     checkForGameEnd() {
         if ((this.position.x > canvas.width) || (this.position.x + this.width < 0)) {
+            newSession.mp3.stopMp3();
             this.endTime = newSession.stopTimer();
             doRender = false;
             placeLogic(this.endTime, this.levelID);

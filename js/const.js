@@ -2,6 +2,14 @@
 *                       КОНСТАНТЫ ПРОЕКТА
 */
 
+// MP3 ПУТИ К ФАЙЛАМ (НУЛЕВОЙ НЕ ТРОГАТЬ!)
+const AudioVolume = 0.2
+const mp3_paths = [
+    '../../audio/main-menu.mp3',
+    '../../audio/dagestan.mp3',
+    '../../audio/pyatigorsk.mp3',
+    '../../audio/vladikavkaz.mp3'
+]
 // КОДЫ КЛАВИШ
 const keyCodes = [
     'KeyW', 'Space',   // ПРЫЖОК
