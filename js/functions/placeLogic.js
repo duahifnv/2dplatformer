@@ -19,8 +19,9 @@ function placeTime(endTime) {
     let prevTime = playerT.readUsername(); // Предыдущее время
     if (prevTime) {    // Игрок уже есть в списке
         if (endTime < prevTime) {
-            playerT.removeTime();
+            let prevPlace = playerT.removeTime();
             playerT.updateSize();
+            playerT.updateUp(prevPlace);
             playerT.placeTime();
         }
         else {

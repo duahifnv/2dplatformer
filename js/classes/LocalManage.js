@@ -15,8 +15,24 @@ class LocalManage {
             }
         }
     }
+
+    // Алгоритм сдвига всех элементов на 1 позицию вверх
+    updateUp(startPos) {
+        let item = {};
+        let nextIdx = 0;
+        for (let i = startPos; i < this.listSize + 1; i++) {
+            nextIdx = parseInt(i) + 1;
+            item = {
+                username: this.getUsername(nextIdx),
+                time: this.getTime(nextIdx)
+            }
+            this.setTime(i, item.username, item.time);
+            this.removeTime(nextIdx);
+        }
+    }
+
     // Алгоритм сдвига всех элементов на 1 позицию вниз
-    updateList(startPos) {
+    updateDown(startPos) {
         let itemTop = {
             username: this.getUsername(startPos),
             time: this.getTime(startPos)
@@ -46,7 +62,7 @@ class LocalManage {
 
     // Получить имя по месту
     getUsername(placement) {
-        if (placement > this.listSize) {
+        if (placement > localStorage.length) {
             return -1
         }
         let nameObj = JSON.parse(localStorage.getItem(this.prefix + placement.toString()));
@@ -67,7 +83,7 @@ class LocalManage {
             // Находим подходящее место для результата
             for (let i = 0; i < this.listSize; i++) {
                 if (this.time < this.getTime(i + 1)) {
-                    this.updateList(i + 1);
+                    this.updateDown(i + 1);
                     localStorage.setItem(this.prefix + (i + 1).toString(), JSON.stringify(itemObj));
                     isPlaced = true;
                     break;

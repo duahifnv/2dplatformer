@@ -133,7 +133,7 @@ const lvl1_MapCollisions = {
     ],
     startPos: {
         x: tileSize * 3.5,
-        y: tileSize * 18
+        y: tileSize * 17
     }
 }
 
