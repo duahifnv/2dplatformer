@@ -2,14 +2,39 @@
 *                       КОНСТАНТЫ ПРОЕКТА
 */
 
-// MP3 ПУТИ К ФАЙЛАМ (НУЛЕВОЙ НЕ ТРОГАТЬ!)
+// MP3 ПУТИ К ФАЙЛАМ
 const AudioVolume = 0.2
-const mp3_paths = [
-    '../../audio/main-menu.mp3',
-    '../../audio/dagestan.mp3',
-    '../../audio/pyatigorsk.mp3',
-    '../../audio/vladikavkaz.mp3'
-]
+const ui_wav_path = '../../audio/sfx/ui/';
+const mp3_path = '../../audio/';
+const gp_wav_path = '../../audio/sfx/gameplay/';
+
+// ЗВУКОВЫЕ ОБЬЕКТЫ
+const mp3_obj = {
+    main_menu: new Mp3(mp3_path + 'main-menu.mp3'),
+    level1: new Mp3(mp3_path + 'dagestan.mp3'),
+    level2: new Mp3(mp3_path + 'pyatigorsk.mp3'),
+    level3: new Mp3(mp3_path + 'vladikavkaz.mp3')
+}
+// Зацикливание всех мелодий
+Object.keys(mp3_obj).forEach(key => {
+    mp3_obj[key].mp3.loop = true;
+});
+const ui_sfx_obj = {
+    start_game: new Mp3(ui_wav_path + 'ui_main_button_climb.wav'),
+    pause: new Mp3(ui_wav_path + 'ui_game_pause.wav'),
+    unpause: new Mp3(ui_wav_path + 'ui_game_unpause.wav'),
+    back: new Mp3(ui_wav_path + 'ui_main_button_back.wav'),
+    select: new Mp3(ui_wav_path + 'ui_main_button_select.wav'),
+    toggle_off: new Mp3(ui_wav_path + 'ui_main_button_toggle_off.wav'),
+    toggle_on: new Mp3(ui_wav_path + 'ui_main_button_toggle_on.wav')
+}
+const gp_sfx_obj = {
+    dash: new Mp3(gp_wav_path + 'dash.wav'),
+    death: new Mp3(gp_wav_path + 'death.wav'),
+    jump: new Mp3(gp_wav_path + 'jump.wav'),
+
+}
+
 // КОДЫ КЛАВИШ
 const keyCodes = [
     'KeyW', 'Space',   // ПРЫЖОК

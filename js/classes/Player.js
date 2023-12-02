@@ -105,6 +105,7 @@ class Player{
             ){
                 this.position.x = this.startPos.x;
                 this.position.y = this.startPos.y;
+                gp_sfx_obj.death.playMp3();
             }
         }
     }

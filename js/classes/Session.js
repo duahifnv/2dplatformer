@@ -11,7 +11,7 @@ class Session {
             source: this.level_background,
             scale: 1
         });
-        this.mp3 = new Mp3(mp3_paths[levelID]);
+        this.mp3 = Object.values(mp3_obj)[levelID];
         this.timer = new Timer({
             position: {
                 x: canvas.width - 310,
