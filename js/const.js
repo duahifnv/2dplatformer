@@ -26,7 +26,8 @@ const ui_sfx_obj = {
     back: new Mp3(ui_wav_path + 'ui_main_button_back.wav'),
     select: new Mp3(ui_wav_path + 'ui_main_button_select.wav'),
     toggle_off: new Mp3(ui_wav_path + 'ui_main_button_toggle_off.wav'),
-    toggle_on: new Mp3(ui_wav_path + 'ui_main_button_toggle_on.wav')
+    toggle_on: new Mp3(ui_wav_path + 'ui_main_button_toggle_on.wav'),
+    switch: new Mp3(ui_wav_path + 'ui_main_button_switch.wav')
 }
 const gp_sfx_obj = {
     dash: new Mp3(gp_wav_path + 'dash.wav'),

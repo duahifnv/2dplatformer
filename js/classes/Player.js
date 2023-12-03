@@ -116,6 +116,7 @@ class Player{
             this.endTime = newSession.stopTimer();
             doRender = false;
             placeLogic(this.endTime, this.levelID);
+            tablesUpdate();
         }
     }
 

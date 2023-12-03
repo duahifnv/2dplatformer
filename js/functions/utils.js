@@ -119,11 +119,6 @@ function KeysListener(){
 
 // Обработчики на кнопках меню
 function menuButtonsListener() {
-    // Старт музыки при нажатии на начальный экран
-    // scene_action = document.getElementById('scene__menu');
-    // scene_action.addEventListener('click', () => {
-    //     mp3_obj.main_menu.playMp3();
-    // });
     // Обработчики на кнопках главного экрана
     btn_NewGame = document.getElementById('level-pick_btn');
     btn_NewGame.addEventListener('click', () => {   // Выбор уровня
@@ -133,7 +128,6 @@ function menuButtonsListener() {
     btn_Leaderboards = document.getElementById('leaderB_btn');
     btn_Leaderboards.addEventListener('click', () => {
         ui_sfx_obj.select.playMp3();
-        tablesUpdate();
         changeScene(2, 'flex');
     });
     btn_Credits = document.getElementById('credits_btn');
@@ -149,6 +143,21 @@ function menuButtonsListener() {
         ui_sfx_obj.start_game.playMp3();
         changeState(1);
         startSession(1);
+    });
+    btn_level1LB = document.getElementById('level_1_LB');
+    btn_level1LB.addEventListener('click', () => {
+        ui_sfx_obj.select.playMp3();
+        changeScene(2, 'flex');
+    });
+    btn_level2LB = document.getElementById('level_2_LB');
+    btn_level2LB.addEventListener('click', () => {
+        ui_sfx_obj.select.playMp3();
+        changeScene(2, 'flex');
+    });
+    btn_level3LB = document.getElementById('level_3_LB');
+    btn_level3LB.addEventListener('click', () => {
+        ui_sfx_obj.select.playMp3();
+        changeScene(2, 'flex');
     });
     btn_level2 = document.getElementById('level_2');
     btn_level2.addEventListener('click', () => {
@@ -168,10 +177,12 @@ function menuButtonsListener() {
     // Обработчики на кнопках выбора таблиц рекордов
     btn_prev_table = document.getElementById('nav-btn-left');
     btn_prev_table.addEventListener('click', () => {
+        ui_sfx_obj.switch.playMp3();
         tableSwitch('prev');
     });
     btn_next_table = document.getElementById('nav-btn-right');
     btn_next_table.addEventListener('click', () => {
+        ui_sfx_obj.switch.playMp3();
         tableSwitch('next');
     });
 }

@@ -41,6 +41,7 @@ function renderGame() {
 window.onload = () => {
     KeysListener();
     menuButtonsListener();
+    tablesUpdate();
 }
 
 
